@@ -101,6 +101,5 @@ public class LibraryService {
 	        return new ResponseEntity<BookApiResponse>(response,HttpStatus.BAD_REQUEST);
 
         }
-		return null;
     }
 }
