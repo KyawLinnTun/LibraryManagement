@@ -95,8 +95,11 @@ public class LibraryService {
         	response.setData(book.get());
         	response.setStatus(new Status("success","Success"));
 	        return new ResponseEntity<BookApiResponse>(response,HttpStatus.OK);
-          }
-        } else {
+          } else {
+                 response.setStatus(new Status("fail","failed"));
+	         return new ResponseEntity<BookApiResponse>(response,HttpStatus.BAD_REQUEST); 
+                 }
+         }  else {
         	response.setStatus(new Status("fail","failed"));
 	        return new ResponseEntity<BookApiResponse>(response,HttpStatus.BAD_REQUEST);
 
