@@ -9,6 +9,8 @@ Spring boot version : 3.3.1
 
 Project loombok
 
+Package Manager : Maven
+
 DB : Spring Data JPA ,postgresql
 
 Api Documentation : openapi
