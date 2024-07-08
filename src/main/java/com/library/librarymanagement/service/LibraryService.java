@@ -92,6 +92,7 @@ public class LibraryService {
         if (borrower.isPresent() && book.isPresent()) {
           if(book.get().isBorrowed() == true) {
         	book.get().setBorrowed(false);
+        	bookRepository.save(book.get());
         	response.setData(book.get());
         	response.setStatus(new Status("success","Success"));
 	        return new ResponseEntity<BookApiResponse>(response,HttpStatus.OK);
