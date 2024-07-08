@@ -74,12 +74,17 @@ public class LibraryService {
         Optional<Borrower> borrower = borrowerRepository.findById(borrowerId);
         Optional<Book> book = bookRepository.findById(bookId);
         if (borrower.isPresent() && book.isPresent()) {
+         if(book.get().isBorrowed() == false) {
         	book.get().setBorrowed(true);
         	bookRepository.save(book.get());
         	response.setData(book.get());
         	response.setStatus(new Status("success","Success"));
 	        return new ResponseEntity<BookApiResponse>(response,HttpStatus.OK);
-        }else {
+        } else {
+            response.setStatus(new Status("fail","failed"));
+            return new ResponseEntity<BookApiResponse>(response,HttpStatus.BAD_REQUEST); 
+            }
+        } else {
         	response.setStatus(new Status("fail","can't not borrow book " + bookId));
 	        return new ResponseEntity<BookApiResponse>(response,HttpStatus.BAD_REQUEST);
         }
